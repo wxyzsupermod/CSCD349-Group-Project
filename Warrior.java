@@ -12,14 +12,20 @@
 
 
 
-public class Warrior extends Hero
+public class Warrior implements HeroInterface
 {
-
+	
+	private double chanceToBlock;
+	private int numTurns; 
+	private String name;
+	private int hitPoints;
+	private int attackSpeed;
+    private double chanceToHit;
+    private int damageMin;
+    private int damageMax;
+    
     public Warrior()
 	{
-
-		super("Warrior", 125, 4, .8, 35, 60, .2);
-
 
     }//end constructor
 

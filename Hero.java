@@ -28,7 +28,7 @@
  */
 
 
-public abstract class Hero extends DungeonCharacter
+public abstract class HeroOld extends DungeonCharacter
 {
 	protected double chanceToBlock;
 	protected int numTurns;

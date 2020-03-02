@@ -4,5 +4,7 @@ public class HeroFactory {
 	public HeroFactory() {
 		
 	}
-	public Hero 
+	public  HeroInterface createSkeleton(String name) {
+		
+	}
 }
