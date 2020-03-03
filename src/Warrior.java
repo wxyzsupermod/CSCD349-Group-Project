@@ -1,5 +1,6 @@
 
-public class Sorcerer implements Hero {
+public class Warrior implements Hero {
+	
 	private int health_points = 50;
 	private int attack_speed = 3;
 	private int hit_accuracy = 3;
@@ -8,8 +9,9 @@ public class Sorcerer implements Hero {
 	private int dodge_rate = 2;
 	private int numTurns;
 	private String name;
-	public Sorcerer(String n) {
-		this.name = n + " the sorcerer";
+	
+	public Warrior(String n) {
+		this.name = n;
 	}
 	@Override
 	public boolean canDefend() {
@@ -20,6 +22,5 @@ public class Sorcerer implements Hero {
 		numTurns = attack_speed/opponent.getAttackSpeed();
 		System.out.println("The number of turns is" + numTurns);
 	}
-	
 
 }
