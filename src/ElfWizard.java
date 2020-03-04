@@ -1,89 +1,56 @@
 import java.util.*;
 
 public class ElfWizard extends GameCharacter{
-	private double hitPoints;
-	private double attackSpeed;
-	private double chanceToHit;
-	private double damageMin;
-	private double damageMax;
-	
-	
-	public String name() {
-		System.out.println("Please enter a name for your ElfWizard");
-		Scanner kb = new Scanner(System.in);
-		String name = kb.nextLine();
-		return name;
-			
-	}
-	public ElfWizard(String name, int healthPoints, int attackSpeed, int damageMin, int damageMax,
-			double chanceToHit) {
-		this.name = name();
-		this.healthPoints = healthPoints;
-		this.attackSpeed = attackSpeed;
-		this.chanceToHit = chanceToHit;
-		this.damageMin = damageMin;
-		this.damageMax = damageMax;
-	}
-	
-	
-	protected String getName()
-	{
-		return name;
-	}
+	private int health_points = 100;
+	private int attack_speed = 4;
+	private int hit_accuracy = 6;
+	private int damage_min = 25;
+	private int damage_max = 45;
+	private int dodge_rate = 7;
+	private int numTurns;
+	private String name;
 
-	protected void setName(String name) 
-	{
+
+	
+	
+	
+	public ElfWizard(String name) {
+		this.name = name + "The Great!";
+  }
+	public ElfWizard(String name, int health_points, int attack_speed, int damage_min, int damage_max,
+			int hit_accuracy) {
 		this.name = name;
+		this.health_points = health_points;
+		this.attack_speed = attack_speed;
+		this.hit_accuracy = hit_accuracy;
+		this.damage_min = damage_min;
+		this.damage_max = damage_max;
+	}
+	
+	//@Override
+
+
+	public boolean canDefend() {
+
+
+		 return Math.random() <= dodge_rate;
+
+
 	}
 
-	protected  int getHealthPoints() 
-	{
-		return healthPoints;
-	}
 
-	public void setHealthPoints(int healthPoints) 
-	{
-		this.healthPoints = healthPoints;
-	}
+	//@Override
 
-	public int getAttackSpeed()
-	{
-		return attackSpeed;
-	}
 
-	public void setAttackSpeed(int attackSpeed) 
-	{
-		this.attackSpeed = attackSpeed;
-	}
+	public void printNumTurns(GameCharacter Opponent) {
 
-	public int getDamageMin() 
-	{
-		return damageMin;
-	}
 
-	public void setDamageMin(int damageMin) 
-	{
-		this.damageMin = damageMin;
-	}
+		int numTurns = attack_speed/Opponent.getAttackSpeed();
 
-	public int getDamageMax()
-	{
-		return damageMax;
-	}
 
-	public void setDamageMax(int damageMax) 
-	{
-		this.damageMax = damageMax;
-	}
+		System.out.println("The number of turns is" + numTurns);
 
-	public double getHitChance() 
-	{
-		return chanceToHit;
-	}
 
-	public void setHitChance(double hitChance)
-	{
-		this.chanceToHit = hitChance;
 	}
 	
 	public boolean canHit()
@@ -91,7 +58,7 @@ public class ElfWizard extends GameCharacter{
 		Random r = new Random();
 		double temp = r.nextDouble();
 		
-		if (temp < chanceToHit)
+		if (temp < hit_accuracy)
 		{
 			return true;
 		}
@@ -108,8 +75,8 @@ public class ElfWizard extends GameCharacter{
 	public void specialSkill(GameCharacter opponent) {
 		
 	}
-	public boolean isAlive( double healthPoints) {
-			if(healthPoints <= 0)
+	public boolean isAlive( double health_points) {
+			if(health_points <= 0)
 			{
 				return true;
 			}
@@ -121,4 +88,4 @@ public class ElfWizard extends GameCharacter{
 		}
 	}
 
-}
+
