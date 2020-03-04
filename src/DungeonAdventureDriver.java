@@ -4,49 +4,37 @@ import java.util.*;
 public class DungeonAdventureDriver {
 	public static void main(String[] args) {
 		
-		Hero H1 = null; 
-		Monster M1 = null;
 		int option;
 		Scanner kb = new Scanner(System.in);
 		option = displayMenu(kb);
 		if(option ==1)
 		{
-			//H1 = new Thief();
+			//call to the hero factory
+			//HeroFactory.createHero(Thief.name(),Thief.stats());
+		
 		}
 		else if( option ==2)
 		{
-			//H1 = new Sorceress();
+			//call to the hero factory
+			//HeroFactory.createHero(Sorceress.name(), Sorceress.stats());
+
 		}
 		else if(option == 3)
 		{
+			//call to the HeroFactory
+			//HeroFactory.createHero(Sorceress.name(), Sorceress.stats());
 			//H1 = new Warrior();
 		}
 		else if(option ==4)
 		{
-			//H1 = new ElfWizard();
-		}
-		M1 = chooseMonster();
-		int choice = chooseAttack(kb);
-		if(choice == 1)
-		{
-			//H1.specialSkill(M1);
-		}
-		else
-		{
-			//H1.attackMethod(M1);
-		}
-		if( M1.healthPoints > 0)
-		{
-			M1.attackMethod(H1);
-		}
-		else
-		{
-			System.out.println("Your Monster has been killed ");
+			 //call to the hero Factory
+			 HeroFactory.createHero("melody", 100, 10, 35, 65,0.8);
+			
 		}
 	}
-	 
 	
-	protected static int chooseAttack(Scanner kb)
+	
+	/*protected static int chooseAttack(Scanner kb)
 	{
 		
 		System.out.println("Please choose the type of attack:");
@@ -55,31 +43,9 @@ public class DungeonAdventureDriver {
 		int choice = kb.nextInt();
 		kb.nextLine();
 		return choice;
-	}
+	}*/
 	
-		protected static Monster chooseMonster()
-		{
-			Monster M1 = null;
-			Random temp = new Random();
-			int num = temp.nextInt(2);
-			
-			if(num ==0)
-			{
-			//	 M1 = new Ogre();
-				
-			}
-			else if(num == 1)
-			{
-			//	M1 = new Skeleton();
-				
-			}
-			else if(num ==2)
-			{
-			//	M1 = new Gremlin();
-				
-			}
-			return M1;
-		}
+	
 		private static int displayMenu(Scanner kb)
 		{
 			
