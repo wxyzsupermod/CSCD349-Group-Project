@@ -23,7 +23,6 @@ public class DungeonAdventureDriver {
 		{
 			//call to the HeroFactory
 			//HeroFactory.createHero(Sorceress.name(), Sorceress.stats());
-			//H1 = new Warrior();
 		}
 		else if(option ==4)
 		{
