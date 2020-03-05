@@ -11,8 +11,6 @@ public class DungeonAdventureDriver {
 		option = displayMenu(kb);
 		Monster M1 = null;
 		M1 = chooseMonster();
-		System.out.println("The Monster chosen was " + M1.getName());
-		//int attackChoice = chooseAttack(kb);
 		
 		
 		if(option ==1)
@@ -51,19 +49,39 @@ public class DungeonAdventureDriver {
 			 System.out.println("Creation of Hero successful : " + name  + " The Sorcerer has "+  H1.getAttackSpeed() + " in Attack Speed!"  );
 		}
 		
-		/*if(attackChoice == 1){
+		System.out.println(H1.getName() + " was attacked by " + M1.getName());
+		
+		while(H1.isAlive() && M1.isAlive()) {
+			int choice = chooseAttack(kb);
+			if(choice == 1) {
+				H1.specialAttack(M1);
+			}
+			if(choice == 2) {
+				H1.regularAttack(M1);
+			}
+			if(H1.getHealthPoints() <= 0) {
+				System.out.println(H1.getName() + " Has been defeated ");
+				break;
+			}
+			if(M1.getHealthPoints() <= 0) {
+				System.out.println(H1.getName() + " has been defeated " + M1.getName());
+				break;
+			}
+		}
+		/*
+		if(attackChoice == 1){
 			H1.specialAttack(M1);
 		}
 		else{
 		H1.regularAttack(M1);
 		}
-		if( M1.isAlive(M1.getAttackSpeed() > 0){
+		if( M1.isAlive()){
 			M1.regularAttack(H1);
 		}
 		else{
-		System.out.println("Your Monster has been killed ");
-	}*/
+		System.out.println("Your Monster has been killed ");*/
 }
+
 	
 	private static int displayMenu(Scanner kb)
 		{
