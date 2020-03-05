@@ -1,143 +1,117 @@
 import java.util.Random;
 
-public class Sorcerer implements Hero {
+public class Sorcerer implements Hero, GameCharacter {
+	private int health_points = 50;
+	private int maxHealth = health_points;
+	private int attack_speed = 3;
+	private double hit_accuracy = 3;
+	private int damage_min = 2;
+	private int damage_max = 20;
+	private int dodge_rate = 2;
+	private int numTurns;
+	private String SpecialSkillName = "heal";
 	private String name;
-	private int health_points;
-	private int attack_speed;
-	private int damage_min;
-	private int damage_max;
-	private double hit_accuracy;
-	private AttackBehavior attack;
-	private int dodge_rate;
 	
-	
-	
-	public Sorcerer(String name) {
-		this.name = name;
-		this.attack_speed = 3;
-		this.damage_max= 65;
-		this.damage_min = 45;
-		this.health_points = 75;
-		this.hit_accuracy = 0.65;
-		this.dodge_rate = 15;
-  }
-	public void attackMethod(AttackBehavior attack) {}
-	public void takeDamage() {}
-	public void chooseAttack() {}
-	public boolean isAlive() {
-		return true;//gets the health points and checks if they are below 0 returns false if < 0 returns true if > 0
+	public Sorcerer(String n) {
+		this.name = n + " the sorcerer";
 	}
-	public void attack(GameCharacter opponent) {}
-	public void regularAttack(GameCharacter opponent) {}
-	public void specialAttack(GameCharacter opponent) {}
-	
-	public String getName()
-	{
-		return name;
+	@Override
+	public void setHealthPoints(int healthPoints) {
+		this.health_points = healthPoints;
 	}
-
-	public void setName(String name) 
-	{
-		this.name = name;
+	@Override
+	public int getAttackSpeed() {
+		return this.attack_speed;
 	}
-
-	public int getHealthPoints() 
-	{
-		return health_points;
-	}
-
-	public void setHealthPoints(int health_points) 
-	{
-		this.health_points = health_points;
-	}
-
-	public int getAttackSpeed()
-	{
-		return attack_speed;
-	}
-
-	public void setAttackSpeed(int attackSpeed) 
-	{
+	@Override
+	public void setAttackSpeed(int attackSpeed) {
 		this.attack_speed = attackSpeed;
-	}
-
-	public int getDamageRangeMin() 
-	{
-		return damage_min;
-	}
-
-	public void setDamageRangeMin(int damage_min) 
-	{
-		this.damage_min = damage_min;
-	}
-
-	public int getDamageRangeMax()
-	{
-		return damage_max;
-	}
-
-	public void setDamageRangeMax(int damage_max) 
-	{
-		this.damage_max = damage_max;
-	}
-
-	public double getHitChance() 
-	{
-		return hit_accuracy;
-	}
-
-	public void setHitChance(double hit_accuracy)
-	{
-		this.hit_accuracy = hit_accuracy;
-	}
-	
-
-	public boolean canDefend() {
-
-
-		 return Math.random() <= dodge_rate;
-
-
-	}
-	public void printNumTurns(GameCharacter Opponent) {
-
-		int numTurns = attack_speed/Opponent.getAttackSpeed();
-		System.out.println("The number of turns is" + numTurns);
-	}
-	
-	public boolean canHit()
-	{
-		Random r = new Random();
-		double temp = r.nextDouble();
 		
-		if (temp < hit_accuracy)
-		{
+	}
+	@Override
+	public int getDamageRangeMin() {
+		return this.damage_min;
+	}
+	@Override
+	public void setDamageRangeMin(int damageRangeMin) {
+		this.damage_min = damageRangeMin;
+		
+	}
+	@Override
+	public int getDamageRangeMax() {
+		return this.damage_max;
+	}
+	@Override
+	public void setDamageRangeMax(int damageRangeMax) {
+		this.damage_max = damageRangeMax;
+		
+	}
+	@Override
+	public double getHitChance() {
+		return this.hit_accuracy;
+	}
+	@Override
+	public void setHitChance(double hitChance) {
+		this.hit_accuracy = hitChance;
+		
+	}
+	@Override
+	public boolean canHit() {
+		double rand = Math.random();
+		if(rand < this.getHitChance()) {
 			return true;
 		}
-		else 
-		{
-			return false;
-		}
-	
+		return false;
 	}
-	
-	public void attackMethod(GameCharacter opponent) {
-		
+	@Override
+	public boolean isAlive() {
+		return this.health_points > 0;
 	}
-	public void specialSkill(GameCharacter opponent) {
-		
-	}
-	public boolean isAlive( double health_points) {
-			if(health_points <= 0)
-			{
-				return true;
+	@Override
+	public void regularAttack(GameCharacter opponent) {
+		if(opponent.isAlive()) {
+			if(this.canHit() != true) {
+				System.out.println(this.getName() + " missed ");
+				return;
 			}
-			else 
-			{
-				return false;
-				
-			}
+			Random rand = new Random();
+			int randDamage = rand.nextInt(this.getDamageRangeMax() - this.getDamageRangeMin());
+			opponent.setHealthPoints(opponent.getHealthPoints() - randDamage);
+			System.out.println(opponent.getName() + " took " + randDamage + " Damage");
 		}
 	}
+	@Override
+	public void specialAttack(GameCharacter opponent) {
+		if(this.getHealthPoints() < this.maxHealth + 20) {
+			this.setHealthPoints(this.getHealthPoints() + 3);
+			System.out.println("Healed for 3 current health is " + this.getHealthPoints());
+		}
+		else {
+			System.out.println("Cannot Heal more than 20 over max health current health is " + this.getHealthPoints());
+		}
+	}
+	@Override
+	public String getName() {
+		return this.name;
+	}
+	@Override
+	public void setName(String name) {
+		this.name = name;
+	}
+	public String toString()
+	{
+		return "Character is " + this.getName() + " with health points of " + this.getHealthPoints();
+	}
+	public String getSpecialSkill() {
+		return this.SpecialSkillName;
+	}
+	@Override
+	public int getHealthPoints() {
+		return health_points;
+	}
+	
+	
+	
+	
 
-
+}

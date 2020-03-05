@@ -3,6 +3,8 @@ import java.util.*;
 
 public class DungeonAdventureDriver {
 	public static void main(String[] args) {
+		int playAgain = 1;
+		do  {
 		Hero H1 = null;
 		int option;
 		Scanner kb = new Scanner(System.in);
@@ -51,35 +53,46 @@ public class DungeonAdventureDriver {
 		
 		System.out.println(H1.getName() + " was attacked by " + M1.getName());
 		
-		while(H1.isAlive() && M1.isAlive()) {
-			int choice = chooseAttack(kb);
-			if(choice == 1) {
-				H1.specialAttack(M1);
+		
+			while(H1.isAlive() && M1.isAlive()) {
+				int choice = chooseAttack(kb);
+				if(choice == 1) {
+					H1.specialAttack(M1);
+					System.out.println(H1.getName() + " does " + H1.getSpecialSkill() + M1.getName() + " Monsters Health is " + M1.getHealthPoints());
+				}
+				if(choice == 2) {
+					H1.regularAttack(M1);
+					System.out.println(H1.getName() + " hits " + M1.getName() + " Monsters Health is " + M1.getHealthPoints());
+				}
+			
+				Random monsterChoice = new Random();
+				int monsterAttack = monsterChoice.nextInt(1);
+				System.out.println(monsterAttack);
+				if(monsterAttack == 0) {
+					M1.regularAttack(H1);
+					System.out.println(M1.getName() + " hits " + H1.getName() + " Heroes Health is " + H1.getHealthPoints());
+				}
+				if(monsterAttack == 1) {
+					M1.specialAttack(H1);
+					System.out.println("Monster Heals" + M1.getHealthPoints());
+				}
+				if(H1.getHealthPoints() <= 0) {
+					System.out.println(H1.getName() + " Has been defeated ");
+					System.out.println("Play Again ? (1 yes 0 no)");
+					playAgain = kb.nextInt();
+			
+					break;
+				}
+				if(M1.getHealthPoints() <= 0) {
+					System.out.println(H1.getName() + " has been defeated " + M1.getName());
+					System.out.println("Play Again? (1 yes 0 no)");
+					playAgain = kb.nextInt();
+					
+					break;
+				}
 			}
-			if(choice == 2) {
-				H1.regularAttack(M1);
-			}
-			if(H1.getHealthPoints() <= 0) {
-				System.out.println(H1.getName() + " Has been defeated ");
-				break;
-			}
-			if(M1.getHealthPoints() <= 0) {
-				System.out.println(H1.getName() + " has been defeated " + M1.getName());
-				break;
-			}
-		}
-		/*
-		if(attackChoice == 1){
-			H1.specialAttack(M1);
-		}
-		else{
-		H1.regularAttack(M1);
-		}
-		if( M1.isAlive()){
-			M1.regularAttack(H1);
-		}
-		else{
-		System.out.println("Your Monster has been killed ");*/
+			
+		}while(playAgain != 0);
 }
 
 	
@@ -114,24 +127,24 @@ public class DungeonAdventureDriver {
 
 	private static Monster chooseMonster()
 	{
-		Monster M1 = new Ogre("New guy"); 
+		MonsterFactory mf = new MonsterFactory();
 		Random temp = new Random();
 		int num = temp.nextInt(5);
-		
+		Monster M1 = null;
 		if(num ==0){
-			 M1 = new Ogre("Ogre");
+			  M1 = mf.createOgre("Ogre");
 		}
 		else if(num == 1){
-			M1 = new Ogre("Skeleton");
+			 M1 = mf.createOgre("Ogre");
 		}
 		else if(num ==2){
-			M1 = new Ogre("Gremlin");
+			 M1 = mf.createOgre("Ogre");
 		}
 		else if(num == 3) {
-			M1 = new Ogre("Cyclops");
+			 M1 = mf.createOgre("Ogre");
 		}
 		else if(num == 4) {
-			M1 = new Ogre("Cerberus");
+			 M1 = mf.createOgre("Ogre");
 		}
 		return M1;
 	}
