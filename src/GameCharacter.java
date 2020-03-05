@@ -1,134 +1,24 @@
 public interface GameCharacter{
+	
+	public int getHealth();
+	public void setHealthPoints(int healthPoints);
+	public int getAttackSpeed();
+	public void setAttackSpeed(int attackSpeed);
+	public int getDamageRangeMin();
+	public void setDamageRangeMin(int damageRangeMin);
+	public int getDamageRangeMax();
+	public void setDamageRangeMax(int damageRangeMax);
+	public double getHitChance();
+	public void setHitChance(double hitChance);
+	public boolean canHit();//generates a random number and checks if the next double is less then than the hit chance if it is returns true if it's not return false
+	public boolean isAlive();//gets the health points and checks if they are below 0 returns false if < 0 returns true if > 0
+	public void attack(GameCharacter opponent);
 	public String getName();
-	public void setName(String name);
-}
-
-
-
-/*import java.util.Random;
-
-	public abstract class GameCharacter 
+	/*@Override
+	public String toString()
 	{
-		protected String name;
-		protected int healthPoints;//how much damage a character can take before it expires
-		protected int attackSpeed;//1 is slowest 10 is fastest
-		protected int damageRangeMin;
-		protected int damageRangeMax;
-		protected double chanceToHit;//chance of hitting opponent when attacking
-		
-		
-		public GameCharacter() 
-		{
-		
-		}
+		return "Character is " + this.name + " with health points of " + this.healthPoints;
+	}*/
+}		
 
-		public GameCharacter(String name, int healthPoints, int attackSpeed, int damageRangeMin, int damageRangeMax,
-				double hitChance)
-		{
-			this.name = name;
-			this.healthPoints = healthPoints;
-			this.attackSpeed = attackSpeed;
-			this.damageRangeMin = damageRangeMin;
-			this.damageRangeMax = damageRangeMax;
-			this.hitChance = hitChance;
-		}
-
-		protected String getName()
-		{
-			return name;
-		}
-
-		protected void setName(String name) 
-		{
-			this.name = name;
-		}
-
-		protected  int getHealthPoints() 
-		{
-			return healthPoints;
-		}
-
-		public void setHealthPoints(int healthPoints) 
-		{
-			this.healthPoints = healthPoints;
-		}
-
-		public int getAttackSpeed()
-		{
-			return attackSpeed;
-		}
-
-		public void setAttackSpeed(int attackSpeed) 
-		{
-			this.attackSpeed = attackSpeed;
-		}
-
-		public int getDamageRangeMin() 
-		{
-			return damageRangeMin;
-		}
-
-		public void setDamageRangeMin(int damageRangeMin) 
-		{
-			this.damageRangeMin = damageRangeMin;
-		}
-
-		public int getDamageRangeMax()
-		{
-			return damageRangeMax;
-		}
-
-		public void setDamageRangeMax(int damageRangeMax) 
-		{
-			this.damageRangeMax = damageRangeMax;
-		}
-
-		public double getHitChance() 
-		{
-			return hitChance;
-		}
-
-		public void setHitChance(double hitChance)
-		{
-			this.hitChance = hitChance;
-		}
-		public abstract void specialSkill(GameCharacter opponent);
-		
-		protected boolean canHit()
-		{
-			Random r = new Random();
-			double temp = r.nextDouble();
-			
-			if (temp < hitChance)
-			{
-				return true;
-			}
-			else 
-			{
-				return false;
-			}
-		
-		}
-		protected boolean isAlive(int healthPoints)
-		{
-			if(healthPoints <= 0)
-			{
-				return true;
-			}
-			else 
-			{
-				return false;
-				
-			}
-		}
-		
-		public abstract void attackMethod(GameCharacter opponent);
-		@Override
-		public String toString()
-		{
-			return "Character is " + this.name + " with health points of " + this.healthPoints;
-		}
-		
-	}
-/*
 

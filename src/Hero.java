@@ -1,7 +1,9 @@
 
 
 public interface Hero {
-	public boolean canDefend();
-	public void printNumTurns(GameCharacter opponent);
+	public void specialSkill(GameCharacter opponent);
+	public String getSpecialSkill();
+	public String getName();
+	public void setName(String name);
 
 }
