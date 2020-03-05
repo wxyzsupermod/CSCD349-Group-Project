@@ -10,7 +10,11 @@ public class Cyclops implements Monster {
 	private double chanceToHeal;
 	private AttackBehavior attack;
 	private int dodge_rate;
-
+	public boolean isAlive() {
+		return true;
+		//gets the health points and checks if they are below 0 returns false if < 0 returns true if > 0
+	}
+	public void attack(GameCharacter opponent) {}
 	public void takeDamage() {}
 	public void attackMethod(AttackBehavior attack) {
 		//based on what happens in the attack chosen
@@ -58,16 +62,16 @@ public class Cyclops implements Monster {
 	public void setAttackSpeed(int attackSpeed) {
 		this.attack_speed = attackSpeed;
 	}
-	public int getDamageMin() {
+	public int getDamageRangeMin() {
 		return damage_min;
 	}
-	public void setDamageMin(int damage_min) {
+	public void setDamageRangeMin(int damage_min) {
 		this.damage_min = damage_min;
 	}
-	public int getDamageMax(){
+	public int getDamageRangeMax(){
 		return damage_max;
 	}
-	public void setDamageMax(int damage_max){
+	public void setDamageRangeMax(int damage_max){
 		this.damage_max = damage_max;
 	}
 	public double getHealChance() {
@@ -78,6 +82,9 @@ public class Cyclops implements Monster {
 	}
 	public void setHitChance(double hit_Chance){
 		this.hit_Chance = hit_Chance;
+	}
+	public double getHitChance() {
+		return hit_Chance;
 	}
 	public boolean canHeal() {
 

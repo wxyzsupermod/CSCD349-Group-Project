@@ -21,14 +21,19 @@ public class Ogre implements Monster{
 		//the values for the damage max, min and hit_chance values in the fight
 		
 	} 
+	public boolean isAlive() {
+		return true;
+		//gets the health points and checks if they are below 0 returns false if < 0 returns true if > 0
+	}
+	public void attack(GameCharacter opponent) {}
 	public AttackBehavior chooseAttack() {
 	
-	AttackBehavior specialAttack= null;
-	return specialAttack;
-	//special skill is that it can heal itself
-	//otherwise regular attack
-	//randomly assigned
-	
+		AttackBehavior specialAttack= null;
+		return specialAttack;
+		//special skill is that it can heal itself
+		//otherwise regular attack
+		//randomly assigned
+
 }
 	public Ogre(String name) {
 		this.name = name;
@@ -58,16 +63,16 @@ public class Ogre implements Monster{
 	public void setAttackSpeed(int attackSpeed) {
 		this.attack_speed = attackSpeed;
 	}
-	public int getDamageMin() {
+	public int getDamageRangeMin() {
 		return damage_min;
 	}
-	public void setDamageMin(int damage_min) {
+	public void setDamageRangeMin(int damage_min) {
 		this.damage_min = damage_min;
 	}
-	public int getDamageMax(){
+	public int getDamageRangeMax(){
 		return damage_max;
 	}
-	public void setDamageMax(int damage_max){
+	public void setDamageRangeMax(int damage_max){
 		this.damage_max = damage_max;
 	}
 	public double getHealChance() {
@@ -78,6 +83,9 @@ public class Ogre implements Monster{
 	}
 	public void setHitChance(double hit_Chance){
 		this.hit_Chance = hit_Chance;
+	}
+	public double getHitChance() {
+		return hit_Chance;
 	}
 	public boolean canHeal() {
 

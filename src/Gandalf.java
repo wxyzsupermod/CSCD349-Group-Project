@@ -1,6 +1,6 @@
-import java.util.*;
+import java.util.Random;
 
-public class ElfWizard implements Hero{
+public class Gandalf implements Hero {
 	private String name;
 	private int health_points;
 	private int attack_speed;
@@ -12,14 +12,14 @@ public class ElfWizard implements Hero{
 	
 	
 	
-	public ElfWizard(String name) {
+	public Gandalf(String name) {
 		this.name = name;
-		this.attack_speed = 4;
-		this.damage_max= 45;
-		this.damage_min = 25;
-		this.health_points = 90;
-		this.hit_accuracy = 0.8;
-		this.dodge_rate = 25;
+		this.attack_speed = 6;
+		this.damage_max= 55;
+		this.damage_min = 35;
+		this.health_points = 95;
+		this.hit_accuracy = 0.7;
+		this.dodge_rate = 30;
   }
 	public void attackMethod(AttackBehavior attack) {}
 	public void takeDamage() {}
@@ -140,5 +140,6 @@ public class ElfWizard implements Hero{
 			}
 		}
 	}
+
 
 

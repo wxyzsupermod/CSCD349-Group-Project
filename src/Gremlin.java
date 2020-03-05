@@ -1,6 +1,6 @@
 import java.util.Random;
 
-public class Cerberus implements Monster {
+public class Gremlin implements Monster {
 	private String name;
 	private int health_points;
 	private int attack_speed;
@@ -34,7 +34,7 @@ public class Cerberus implements Monster {
 	//randomly assigned
 	
 }
-	public Cerberus(String name) {
+	public Gremlin(String name) {
 		this.name = name;
 		this.attack_speed = 4;
 		this.damage_max= 45;
@@ -118,6 +118,3 @@ public class Cerberus implements Monster {
 			}
 		}
 	}
-
-
-

@@ -19,7 +19,7 @@ public class DungeonAdventureDriver {
 		{
 			 //call to the hero Factory
 			 H1 = HeroFactory.createThief(name);
-			 System.out.println("Creation of Hero successful : " + name  + " The kind Thief has "+  H1.getAttackSpeed() + " in Attack Speed!"  );
+			 System.out.println("Creation of Hero successful : " + name  + " The kind Thief has "+  H1.getHealthPoints() + " in health Points!"  );
 		}
 		else if(option ==2)
 		{

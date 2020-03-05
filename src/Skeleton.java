@@ -1,18 +1,18 @@
 import java.util.Random;
 
-public class Cerberus implements Monster {
+public class Skeleton implements Monster{
 	private String name;
 	private int health_points;
-	private int attack_speed;
+	private int attack_speed;	
 	private int damage_min;
 	private int damage_max;
 	private double hit_Chance;
-	private double chanceToHeal;
+	private double chanceToHeal;	
 	private AttackBehavior attack;
 	private int dodge_rate;
+
 	public boolean isAlive() {
-		return true;
-		//gets the health points and checks if they are below 0 returns false if < 0 returns true if > 0
+		return true;//gets the health points and checks if they are below 0 returns false if < 0 returns true if > 0
 	}
 	public void attack(GameCharacter opponent) {}
 	public void takeDamage() {}
@@ -23,18 +23,18 @@ public class Cerberus implements Monster {
 		//specialattack will allow the monster to heal itself
 		//based on the randomly generated chance and it will increase
 		//the values for the damage max, min and hit_chance values in the fight
-		
+	
 	} 
 	public AttackBehavior chooseAttack() {
-	
-	AttackBehavior specialAttack= null;
-	return specialAttack;
-	//special skill is that it can heal itself
-	//otherwise regular attack
-	//randomly assigned
-	
-}
-	public Cerberus(String name) {
+
+		AttackBehavior specialAttack= null;
+		return specialAttack;
+		//special skill is that it can heal itself
+		//otherwise regular attack
+		//randomly assigned
+
+	}
+	public Skeleton(String name) {
 		this.name = name;
 		this.attack_speed = 4;
 		this.damage_max= 45;
@@ -94,30 +94,27 @@ public class Cerberus implements Monster {
 	{
 		Random r = new Random();
 		double temp = r.nextDouble();
-		
+	
 		if (temp < hit_Chance){
+			return true;
+		}
+		else {
+		return false;
+		}
+	}
+
+	public void regularAttack(GameCharacter opponent) {
+	
+	}
+	public void specialAttack(GameCharacter opponent) {
+	
+	}
+	public boolean isAlive( double health_points) {
+		if(health_points <= 0){
 			return true;
 		}
 		else {
 			return false;
 		}
 	}
-	
-	public void regularAttack(GameCharacter opponent) {
-		
-	}
-	public void specialAttack(GameCharacter opponent) {
-		
-	}
-	public boolean isAlive( double health_points) {
-			if(health_points <= 0){
-				return true;
-			}
-			else {
-				return false;
-			}
-		}
-	}
-
-
-
+}

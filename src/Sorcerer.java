@@ -1,6 +1,6 @@
-import java.util.*;
+import java.util.Random;
 
-public class ElfWizard implements Hero{
+public class Sorcerer implements Hero {
 	private String name;
 	private int health_points;
 	private int attack_speed;
@@ -12,21 +12,20 @@ public class ElfWizard implements Hero{
 	
 	
 	
-	public ElfWizard(String name) {
+	public Sorcerer(String name) {
 		this.name = name;
-		this.attack_speed = 4;
-		this.damage_max= 45;
-		this.damage_min = 25;
-		this.health_points = 90;
-		this.hit_accuracy = 0.8;
-		this.dodge_rate = 25;
+		this.attack_speed = 3;
+		this.damage_max= 65;
+		this.damage_min = 45;
+		this.health_points = 75;
+		this.hit_accuracy = 0.65;
+		this.dodge_rate = 15;
   }
 	public void attackMethod(AttackBehavior attack) {}
 	public void takeDamage() {}
 	public void chooseAttack() {}
 	public boolean isAlive() {
-		return true;
-		//gets the health points and checks if they are below 0 returns false if < 0 returns true if > 0
+		return true;//gets the health points and checks if they are below 0 returns false if < 0 returns true if > 0
 	}
 	public void attack(GameCharacter opponent) {}
 	public void regularAttack(GameCharacter opponent) {}
