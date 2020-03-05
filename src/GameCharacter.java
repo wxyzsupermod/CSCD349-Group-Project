@@ -1,4 +1,11 @@
-import java.util.Random;
+public interface GameCharacter{
+	public String getName();
+	public void setName(String name);
+}
+
+
+
+/*import java.util.Random;
 
 	public abstract class GameCharacter 
 	{
@@ -123,6 +130,5 @@ import java.util.Random;
 		}
 		
 	}
-
-
+/*
 

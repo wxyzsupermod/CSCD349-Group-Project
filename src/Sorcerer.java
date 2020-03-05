@@ -17,7 +17,7 @@ public class Sorcerer implements Hero {
 	}
 	@Override
 	public void printNumTurns(GameCharacter Opponent) {
-		numTurns = attack_speed/opponent.getAttackSpeed();
+		numTurns = attack_speed/Opponent.getAttackSpeed();
 		System.out.println("The number of turns is" + numTurns);
 	}
 	
