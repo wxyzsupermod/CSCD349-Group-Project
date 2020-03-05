@@ -1,9 +1,20 @@
 
 public class MonsterFactory{
 	
-	public static Monster createMonster(String name, int health_points, int attack_speed, int damage_min, int damage_max,
-			double hit_accuracy, double chanceToHeal, int minHeal, int maxHeal) {
-		return new Monster(name, health_points,attack_speed,damage_min, damage_max,hit_accuracy);
+	public static Monster createOgre(String name) {
+		return new Ogre(name);
+	}
+	public static Monster createCyclops(String name) {
+		return new Cyclops(name);
+	}
+	public static Monster createSkeleton(String name) {
+		return new Skeleton(name);
+	}
+	public static Monster createCerberus(String name) {
+		return new Cerberus(name);
+	}
+	public static Monster createGremlin(String name) {
+		return new Gremlin(name);
 	}
 }
 
