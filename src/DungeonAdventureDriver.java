@@ -75,14 +75,16 @@ public class DungeonAdventureDriver {
 					System.out.println("Monster Heals itself and now has " + M1.getHealthPoints()+ " in health points");
 				}
 				if(H1.getHealthPoints() <= 0) {
-					System.out.println(H1.getName() + " Has been defeated ");
+					System.out.println(H1.getName() + " has been defeated! ");
+					System.out.println("The winner is: " + M1.getName());
 					System.out.println("Play Again ? (1 yes 0 no)");
 					playAgain = kb.nextInt();
 			
 					break;
 				}
 				if(M1.getHealthPoints() <= 0) {
-					System.out.println(H1.getName() + " has been defeated " + M1.getName());
+					System.out.println(M1.getName() + " has been defeated! ");
+					System.out.println("The winner is: " + H1.getName());
 					System.out.println("Play Again? (1 yes 0 no)");
 					playAgain = kb.nextInt();
 					
