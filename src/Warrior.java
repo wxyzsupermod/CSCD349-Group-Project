@@ -7,10 +7,6 @@ public class Warrior extends Hero {
 			double hit_accuracy, String specialSkillName,int dodge_rate) {
 		super(name,85,5,15,45,0.75,"Mace", 35);
 	}
-	
-	public boolean isAlive() {
-		return this.getHealthPoints() > 0;
-	}
 	@Override
 	public void regularAttack(GameCharacter opponent) {
 		if(opponent.isAlive()) {

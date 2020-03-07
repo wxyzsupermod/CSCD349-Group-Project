@@ -32,14 +32,6 @@ public class Ogre extends Monster{
 
 		}
 	}
-	public boolean isAlive( double health_points) {
-			if(health_points <= 0){
-				return true;
-			}
-			else {
-				return false;
-			}
-		}
 	
-	}
+}
 

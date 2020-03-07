@@ -1,4 +1,9 @@
-
+//Melody Kinyon
+//Corbin Smith
+//Jordan Fischer
+//FinalProject Refactor
+//Winter 2020
+//3/6/2020
 import java.util.*;
 
 public class DungeonAdventureDriver {

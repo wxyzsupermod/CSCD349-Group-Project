@@ -9,10 +9,6 @@ public class ElfWizard extends Hero{
 			double hit_accuracy, String specialSkillName,int dodge_rate) {
 		super(name,95,6,10,35,0.35," Fire Ball ", 44);
 	}
-	
-	public boolean isAlive() {
-		return this.getHealthPoints() > 0;
-	}
 	public void regularAttack(GameCharacter opponent) {
 		if(opponent.isAlive()) {
 			if(this.canHit() != true) {
