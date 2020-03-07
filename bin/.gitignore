@@ -1,8 +1,2 @@
-/AttackBehavior.class
-/Cerberus.class
-/Cyclops.class
-/ElfWizard.class
-/Gandalf.class
-/Gremlin.class
-/Ogre.class
-/Skeleton.class
+/.gitignore
+/Attack.class
