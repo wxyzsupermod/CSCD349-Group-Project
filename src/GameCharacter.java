@@ -1,26 +1,116 @@
+import java.util.Random;
 
-
-	public interface GameCharacter
+public abstract class GameCharacter
 	{
-		public abstract void regularAttack(GameCharacter opponent);
-		public abstract void specialAttack(GameCharacter opponent);
-		public int getHealthPoints();
-		public void setHealthPoints(int healthPoints);
-		public int getAttackSpeed();
-		public void setAttackSpeed(int attackSpeed);
-		public int getDamageRangeMin();
-		public void setDamageRangeMin(int damageRangeMin);
-		public int getDamageRangeMax();
-		public void setDamageRangeMax(int damageRangeMax);
-		public double getHitChance();
-		public void setHitChance(double hitChance);
-		public boolean canHit();//generates a random number and checks if the next double is less then than the hit chance if it is returns true if it's not return false
-		public boolean isAlive();//gets the health points and checks if they are below 0 returns false if < 0 returns true if > 0
-		public void setName(String name);
-		public String getSpecialSkill();
-		public String getName();
-
+	private String name;
+	private int health_points;
+	private int attack_speed;
+	private int damage_min;
+	private int damage_max;
+	private double hit_accuracy;
+	private String specialSkillName;
+	private int dodge_rate;
+	private int numTurns;
+	public GameCharacter(String n,int health_points, int attack_speed, int damage_min, int damage_max, 
+						double hit_accuracy, String specialSkillName,int dodge_rate) {
+		this.name = n;
+		this.attack_speed = attack_speed;
+		this.damage_max= damage_max;
+		this.damage_min = damage_min;
+		this.health_points = health_points;
+		this.hit_accuracy = hit_accuracy;
+		this.dodge_rate = dodge_rate;
+		this.specialSkillName = specialSkillName;
 	}
+	public void setHealthPoints(int healthPoints) {
+		this.health_points = healthPoints;
+	}
+	public int getAttackSpeed() {
+		return this.attack_speed;
+	}
+	public void setAttackSpeed(int attackSpeed) {
+		this.attack_speed = attackSpeed;
+		
+	}
+	public int getDamageRangeMin() {
+		return this.damage_min;
+	}
+	public void setDamageRangeMin(int damageRangeMin) {
+		this.damage_min = damageRangeMin;
+		
+	}
+	public int getDamageRangeMax() {
+		return this.damage_max;
+	}
+	public void setDamageRangeMax(int damageRangeMax) {
+		this.damage_max = damageRangeMax;
+		
+	}
+	public double getHitChance() {
+		return this.hit_accuracy;
+	}
+	public void setHitChance(double hitChance) {
+		this.hit_accuracy = hitChance;
+		
+	}
+	public boolean canHit() {
+		double rand = Math.random();
+		if(rand < this.getHitChance()) {
+			return true;
+		}
+		return false;
+	}
+	public boolean isAlive() {
+		return this.health_points > 0;
+	}
+	public void regularAttack(GameCharacter opponent) {
+		if(opponent.isAlive()) {
+			if(this.canHit() != true) {
+				System.out.println(this.getName() + " missed ");
+				return;
+			}
+			Random rand = new Random();
+			int randDamage = rand.nextInt(this.getDamageRangeMax() - this.getDamageRangeMin());
+			opponent.setHealthPoints(opponent.getHealthPoints() - randDamage);
+			System.out.println(opponent.getName() + " took " + randDamage + " Damage");
+		}
+	}
+
+	public void specialAttack(GameCharacter opponent) {
+		if(this.getHealthPoints() < this.getHealthPoints() + 20) {
+			this.setHealthPoints(this.getHealthPoints() + 3);
+			System.out.println("Healed for 3 current health is " + this.getHealthPoints());
+		}
+		else {
+			System.out.println("Cannot Heal more than 20 over max health current health is " + this.getHealthPoints());
+		}
+	}
+	
+	public String getName() {
+		return this.name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
+	}
+	public String toString()
+	{
+		return "Character is " + this.getName() + " with health points of " + this.getHealthPoints();
+	}
+	public String getSpecialSkill() {
+		return this.specialSkillName;
+	}
+	public int getHealthPoints() {
+		return health_points;
+	}
+	public boolean canDefend() {
+		return Math.random() <= dodge_rate;
+	}
+	public void printNumTurns(GameCharacter Opponent) {
+		numTurns = attack_speed/Opponent.getAttackSpeed();
+		System.out.println("The number of turns is" + this.numTurns);
+	}
+}
 	
 	
 

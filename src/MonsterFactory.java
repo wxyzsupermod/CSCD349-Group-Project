@@ -1,20 +1,30 @@
 
 public class MonsterFactory{
 	
-	public Monster createOgre(String name) {
-		return new Ogre(name);
+	public Ogre createOgre(String name,int health_points, int attack_speed, int damage_min, int damage_max, 
+							double hit_accuracy, String specialSkillName,int dodge_rate){
+		return new Ogre(name,health_points,attack_speed, damage_min, damage_max, 
+						hit_accuracy,specialSkillName,dodge_rate);
 	}
-	public Monster createCyclops(String name) {
-		return new Cyclops(name);
+	public Cyclops createCyclops(String name,int health_points, int attack_speed, int damage_min, int damage_max, 
+								double hit_accuracy, String specialSkillName,int dodge_rate){
+		return new Cyclops(name,health_points,attack_speed, damage_min, damage_max, 
+							hit_accuracy,specialSkillName,dodge_rate);
 	}
-	public Monster createSkeleton(String name) {
-		return new Skeleton(name);
+	public Skeleton createSkeleton(String name,int health_points, int attack_speed, int damage_min, int damage_max, 
+								double hit_accuracy, String specialSkillName,int dodge_rate){
+		return new Skeleton(name,health_points,attack_speed, damage_min, damage_max, 
+							hit_accuracy,specialSkillName,dodge_rate);
 	}
-	public Monster createCerberus(String name) {
-		return new Cerberus(name);
+	public Cerberus createCerberus(String name,int health_points, int attack_speed, int damage_min, int damage_max, 
+								double hit_accuracy, String specialSkillName,int dodge_rate){
+		return new Cerberus(name,health_points,attack_speed, damage_min, damage_max, 
+							hit_accuracy,specialSkillName,dodge_rate);
 	}
-	public Monster createGremlin(String name) {
-		return new Gremlin(name);
+	public Gremlin createGremlin(String name,int health_points, int attack_speed, int damage_min, int damage_max, 
+								double hit_accuracy, String specialSkillName,int dodge_rate){
+		return new Gremlin(name,health_points,attack_speed, damage_min, damage_max, 
+							hit_accuracy,specialSkillName,dodge_rate);
 	}
 }
 
