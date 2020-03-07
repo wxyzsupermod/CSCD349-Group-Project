@@ -1,25 +1,37 @@
+import java.util.Random;
 
-public class Sorceress implements Hero {
-	private int health_points = 50;
-	private int attack_speed = 3;
-	private int hit_accuracy = 3;
-	private int damage_min = 2;
-	private int damage_max = 4;
-	private int dodge_rate = 2;
-	private int numTurns;
-	private String name;
-	public Sorceress(String n) {
-		this.name = n + " the sorcerer";
-	}
-	@Override
-	public boolean canDefend() {
-		 return Math.random() <= dodge_rate;
-	}
-	@Override
-	public void printNumTurns(GameCharacter Opponent) {
-		numTurns = attack_speed/Opponent.getAttackSpeed();
-		System.out.println("The number of turns is" + numTurns);
-	}
+public class Sorceress extends Hero {
 	
 
+	public Sorceress(String name,int health_points, int attack_speed, int damage_min, int damage_max, 
+			double hit_accuracy, String specialSkillName,int dodge_rate) {
+			super(name,75,4,25,45,0.65,"Fire Spell", 25);
+	}
+	@Override
+	public void regularAttack(GameCharacter opponent) {
+		if(opponent.isAlive()) {
+		if(this.canHit() != true) {
+			System.out.println(this.getName() + " has missed opponent! ");
+			return;
+		}
+		Random rand = new Random();
+		int randDamage = rand.nextInt(this.getDamageRangeMax() - this.getDamageRangeMin());
+		opponent.setHealthPoints(opponent.getHealthPoints() - randDamage);
+		
+		}
+	}
+	@Override
+	public void specialAttack(GameCharacter opponent) {
+		if(opponent.isAlive()) {
+			if(this.canHit() != true) {
+				System.out.println(this.getName() + "'s special skill missed! ");
+				return;
+			}
+			Random rand = new Random();
+			int randDamage = rand.nextInt((this.getDamageRangeMax() - this.getDamageRangeMin())-15);
+			opponent.setHealthPoints(opponent.getHealthPoints() - randDamage);
+			
+		}
+	}
 }
+	

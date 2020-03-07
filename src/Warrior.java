@@ -1,26 +1,41 @@
 
-public class Warrior implements Hero {
-	
-	private int health_points = 50;
-	private int attack_speed = 3;
-	private int hit_accuracy = 3;
-	private int damage_min = 2;
-	private int damage_max = 4;
-	private int dodge_rate = 2;
-	private int numTurns;
-	private String name;
-	
-	public Warrior(String n) {
-		this.name = n;
-	}
-	@Override
-	public boolean canDefend() {
-		 return Math.random() <= dodge_rate;
-	}
-	@Override
-	public void printNumTurns(GameCharacter Opponent) {
-		numTurns = attack_speed/opponent.getAttackSpeed();
-		System.out.println("The number of turns is" + numTurns);
-	}
+import java.util.Random;
 
+public class Warrior extends Hero {
+	
+
+	public Warrior(String name,int health_points, int attack_speed, int damage_min, int damage_max, 
+			double hit_accuracy, String specialSkillName,int dodge_rate) {
+		super(name,85,5,15,45,0.75,"Mace", 35);
+	}
+	
+	public boolean isAlive() {
+		return this.getHealthPoints() > 0;
+	}
+	@Override
+	public void regularAttack(GameCharacter opponent) {
+		if(opponent.isAlive()) {
+		if(this.canHit() != true) {
+			System.out.println(this.getName() + "has missed opponent!");
+			return;
+		}
+		Random rand = new Random();
+		int randDamage = rand.nextInt(this.getDamageRangeMax() - this.getDamageRangeMin());
+		opponent.setHealthPoints(opponent.getHealthPoints() - randDamage);
+	
+		}
+	}
+	@Override
+	public void specialAttack(GameCharacter opponent) {
+		if(opponent.isAlive()) {
+			if(this.canHit() != true) {
+				System.out.println(this.getName() + "'s special attack has missed! ");
+				return;
+			}
+			Random rand = new Random();
+			int randDamage = rand.nextInt((this.getDamageRangeMax() - this.getDamageRangeMin())-25);
+			opponent.setHealthPoints(opponent.getHealthPoints() - randDamage);
+			
+		}
+	}
 }
