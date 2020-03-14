@@ -1,45 +1,21 @@
-import java.util.*;
 
-public class Ogre extends Monster{
-	
-	
-	public Ogre(String name,int health_points, int attack_speed, int damage_min, int damage_max, 
-			double hit_accuracy, String specialSkillName,int dodge_rate) {
-		super(name,65,4,25,35,0.8,"Heal itself", 25);
-	}
-	
-	
-	
-	public void regularAttack(GameCharacter opponent) {
-		if(opponent.isAlive()) {
-			if(this.canHit() != true) {
-				System.out.println(this.getName() + " has missed his opponent!");
-				return;
-			}
-			Random rand = new Random();
-			int randDamage = rand.nextInt(this.getDamageRangeMax() - this.getDamageRangeMin());
-			opponent.setHealthPoints(opponent.getHealthPoints() - randDamage);
-			
-		}
-	}
-	public void specialAttack(GameCharacter opponent) {
-		if(this.getHealthPoints() < this.getDamageRangeMax()) {
-			this.setHealthPoints(this.getHealthPoints() + 3);
-			System.out.println("Healed for 3 current health is " + this.getHealthPoints());
-		}
-		else {
-			System.out.println(this.getName() + "'s special skill missed! ");
+public class Ogre extends Monster implements Attack
+{
 
-		}
-	}
-	public boolean isAlive( double health_points) {
-			if(health_points <= 0){
-				return true;
-			}
-			else {
-				return false;
-			}
-		}
-	
-	}
+    public Ogre()
+	{
+		super("Oscar the Ogre", 200, 2, .6, .1, 30, 50, 30, 50);
 
+
+    }//end constructor
+    @Override
+	public void attack(DungeonCharacter opponent)
+	{
+		System.out.println(getName() + " slowly swings a club toward's " +
+							opponent.getName() + ":");
+		super.attack(opponent);
+
+	}//end override of attack
+
+
+}//end Monster class

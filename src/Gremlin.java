@@ -1,33 +1,21 @@
-import java.util.*;
 
-public class Gremlin extends Monster{
+public class Gremlin extends Monster implements Attack
+{
 
-	public Gremlin(String name,int health_points, int attack_speed, int damage_min, int damage_max, 
-			double hit_accuracy, String specialSkillName,int dodge_rate) {
-		super(name,90,2,25,50,0.8," heals itself ", 25);
-	}
-	@Override
-	public void regularAttack(GameCharacter opponent) {
-		if(opponent.isAlive()) {
-			if(this.canHit() != true) {
-				System.out.println(this.getName() + " has missed his opponent! ");
-				return;
-			}
-			Random rand = new Random();
-			int randDamage = rand.nextInt(this.getDamageRangeMax() - this.getDamageRangeMin());
-			opponent.setHealthPoints(opponent.getHealthPoints() - randDamage);
-			
-		}
-	}
-	@Override
-	public void specialAttack(GameCharacter opponent) {
-		if(this.getHealthPoints() < this.getDamageRangeMax()) {
-			this.setHealthPoints(this.getHealthPoints() + 3);
-			System.out.println("Healed for 3 current health is " + this.getHealthPoints());
-		}
-		else {
-			System.out.println(this.getName() + "'s special skill missed!");
+    public Gremlin()
+	{
+		super("Gnarltooth the Gremlin", 70, 5, .8, .4, 15, 30, 20, 40);
 
-		}
-	}
-}
+    }//end constructor
+
+    @Override
+	public void attack(DungeonCharacter opponent)
+	{
+		System.out.println(this.getName() + " jabs his kris at " +
+							opponent.getName() + ":");
+		super.attack(opponent);
+
+	}//end override of attack
+
+
+}//end class Gremlin
